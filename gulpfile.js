@@ -1,15 +1,19 @@
-var gulp = require("gulp");
-var livereload = require("gulp-livereload");
-var sass = require("gulp-ruby-sass");
-var autoprefix = require("gulp-autoprefixer");
+var gulp = require('gulp')
+var livereload = require('gulp-livereload')
+var sass = require('gulp-sass')
 
-gulp.task("sass", function() {
-	sass("assets/scss/**/*.scss")
-		.pipe(autoprefix("last 2 versions"))
-		.pipe(gulp.dest("./public/css/"))
-		.pipe(livereload());
-});
+sass.compiler = require('node-sass')
 
-gulp.task("default", ["sass"], function() {
-	gulp.watch("assets/scss/**/*.scss", ["sass"]);
-});
+var autoprefix = require('gulp-autoprefixer')
+
+gulp.task('sass', function () {
+  return gulp
+    .src('assets/scss/**/*.scss')
+    .pipe(sass().on('error', sass.logError))
+    .pipe(autoprefix('last 2 versions'))
+    .pipe(gulp.dest('./public/css'))
+})
+
+gulp.task('default', ['sass'], function () {
+  gulp.watch('assets/scss/**/*.scss', ['sass'])
+})
