@@ -201,7 +201,7 @@ window.addEventListener(
 
   const triggerProBtn = document.querySelector('#trigger-pro')
   const proForm = document.querySelector('#pro-form')
-  triggerProBtn.addEventListener('click', function () {
+  triggerProBtn && triggerProBtn.addEventListener('click', function () {
     this.style.display = 'none'
     proForm.style.display = 'block'
   })
