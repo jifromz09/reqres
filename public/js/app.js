@@ -123,17 +123,16 @@ window.addEventListener(
 
   var spinnerEl = consoleEl.querySelector("[data-key='spinner']");
   
-  var timerID = null
+  var timerID = null;
 
   [].forEach.call(endpointEls, function(el) {
     el.addEventListener("click", function(e) {
-      try {
-        clearTimeout(timerID)
-        timerID = setTimeout(function() {
-          var adEl = document.querySelector("#carbonads");
-          if (adEl && typeof _carbonads !== "undefined") _carbonads.refresh();
-        }, 500)
-      } catch (error) {}
+      
+      clearTimeout(timerID);
+      timerID = setTimeout(function() {
+        var adEl = document.querySelector("#carbonads");
+        if (adEl && typeof _carbonads !== "undefined") _carbonads.refresh();
+      }, 500)
 
       var element = e.currentTarget;
 
