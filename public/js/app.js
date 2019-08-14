@@ -123,11 +123,10 @@ window.addEventListener(
 
   var spinnerEl = consoleEl.querySelector("[data-key='spinner']");
 
-  var adEl = document.querySelector("#carbonads");
-
   [].forEach.call(endpointEls, function(el) {
     el.addEventListener("click", function(e) {
       try {
+        var adEl = document.querySelector("#carbonads");
         if (adEl && typeof _carbonads !== "undefined") _carbonads.refresh();
       } catch (error) {}
 
